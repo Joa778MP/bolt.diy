@@ -73,6 +73,20 @@ const gitInfo = getGitInfo();
 
 export default defineConfig((config) => {
   return {
+    // AÑADIDO: Configuración del servidor de desarrollo Vite
+    server: {
+      host: true, // Escucha en todas las interfaces de red (0.0.0.0)
+      allowedHosts: ['dksgjhgd-boltdiy-codex.y8mxle.easypanel.host'],
+      // Si estás usando un proxy (como Easypanel) y el HMR no funciona,
+      // podrías necesitar configurar el puerto del cliente para HMR.
+      // Generalmente es 443 para HTTPS o 80 para HTTP si el proxy
+      // maneja SSL/TLS.
+      // hmr: {
+      //   clientPort: 443, // o el puerto que tu proxy expone al cliente
+      // },
+    },
+    // FIN DE AÑADIDO
+
     define: {
       __COMMIT_HASH: JSON.stringify(gitInfo.commitHash),
       __GIT_BRANCH: JSON.stringify(gitInfo.branch),
